@@ -1,14 +1,46 @@
 {
   "runtimeTarget": {
     "name": ".NETCoreApp,Version=v1.0",
-    "signature": "da39a3ee5e6b4b0d3255bfef95601890afd80709"
+    "signature": "2f1ed05920703aa05e05af22569419795329ae32"
   },
   "compilationOptions": {},
   "targets": {
     ".NETCoreApp,Version=v1.0": {
       "CsharPing/1.0.0": {
+        "dependencies": {
+          "System.Net.NetworkInformation": "4.1.0",
+          "System.Net.Ping": "4.0.0"
+        },
         "runtime": {
           "CsharPing.dll": {}
+        }
+      },
+      "System.Net.NetworkInformation/4.1.0": {
+        "runtimeTargets": {
+          "runtimes/linux/lib/netstandard1.3/System.Net.NetworkInformation.dll": {
+            "rid": "linux",
+            "assetType": "runtime"
+          },
+          "runtimes/osx/lib/netstandard1.3/System.Net.NetworkInformation.dll": {
+            "rid": "osx",
+            "assetType": "runtime"
+          },
+          "runtimes/win/lib/netstandard1.3/System.Net.NetworkInformation.dll": {
+            "rid": "win",
+            "assetType": "runtime"
+          }
+        }
+      },
+      "System.Net.Ping/4.0.0": {
+        "runtimeTargets": {
+          "runtimes/unix/lib/netstandard1.3/System.Net.Ping.dll": {
+            "rid": "unix",
+            "assetType": "runtime"
+          },
+          "runtimes/win/lib/netstandard1.3/System.Net.Ping.dll": {
+            "rid": "win",
+            "assetType": "runtime"
+          }
         }
       }
     }
@@ -18,6 +50,16 @@
       "type": "project",
       "serviceable": false,
       "sha512": ""
+    },
+    "System.Net.NetworkInformation/4.1.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-Q0rfeiW6QsiZuicGjrFA7cRr2+kXex0JIljTTxzI09GIftB8k+aNL31VsQD1sI2g31cw7UGDTgozA/FgeNSzsQ=="
+    },
+    "System.Net.Ping/4.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-46gZ2B7Be1p8PiN9mzKiUCYj2ZU8DKTAP685yYOZkb617P0m8KCpPa2IUvMdQhV/XC7VhSoiM4s3vvlM2NmE4w=="
     }
   }
 }

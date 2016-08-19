@@ -48,6 +48,8 @@
 --reference:/home/shawnkoon/.nuget/packages/System.Linq.Queryable/4.0.1/ref/netstandard1.0/System.Linq.Queryable.dll
 --reference:/home/shawnkoon/.nuget/packages/System.Net.Http/4.1.0/ref/netstandard1.3/System.Net.Http.dll
 --reference:/home/shawnkoon/.nuget/packages/System.Net.NameResolution/4.0.0/ref/netstandard1.3/System.Net.NameResolution.dll
+--reference:/home/shawnkoon/.nuget/packages/System.Net.NetworkInformation/4.1.0/ref/netstandard1.3/System.Net.NetworkInformation.dll
+--reference:/home/shawnkoon/.nuget/packages/System.Net.Ping/4.0.0/ref/netstandard1.3/System.Net.Ping.dll
 --reference:/home/shawnkoon/.nuget/packages/System.Net.Primitives/4.0.11/ref/netstandard1.3/System.Net.Primitives.dll
 --reference:/home/shawnkoon/.nuget/packages/System.Net.Requests/4.0.11/ref/netstandard1.3/System.Net.Requests.dll
 --reference:/home/shawnkoon/.nuget/packages/System.Net.Security/4.0.0/ref/netstandard1.3/System.Net.Security.dll
