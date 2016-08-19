@@ -4,7 +4,7 @@
 ---
 <ul>
   <li><strong>Project Name</strong> : CsharPing</li>
-  <li><strong>Project description</strong> : Graphical Ping Program developed in .Net Core</li>
+  <li><strong>Project description</strong> : Graphical Ping Program developed in .Net Core. Cross Platform Application.</li>
   
   <li><strong>Used Languages</strong> : C#</li>
   
@@ -20,5 +20,9 @@
 
 <h1>Program Specification.</h1>
 <ol>
-  <li>1. *************</li>
+  <li>Install dotnet core on your machine. <a href="https://www.microsoft.com/net/core">Link</a></li>
+  <li>Clone the Project, open up a terminal.</li>
+  <li>Type   dotnet restore</li>
+  <li>Type   dotnet run</li>
+  <li>Change the webToPing string to website you want to ping. ( This is will change in future to arguments )</li>
 </ol>
