@@ -6796,6 +6796,7 @@
   },
   "projectFileDependencyGroups": {
     "": [
+      "System.Collections",
       "System.Net.NetworkInformation",
       "System.Net.Ping",
       "System.Threading"
