@@ -201,7 +201,7 @@ namespace ConsoleApplication
                 }
                 else
                 {
-                    Console.ForegroundColor = ConsoleColor.Green;
+                    Console.ForegroundColor = ConsoleColor.GreenGrass;
                     Console.Write(PrintGraphLine(graphLines[row]));
                     Console.ResetColor();
                 }
