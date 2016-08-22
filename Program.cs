@@ -8,10 +8,12 @@ namespace ConsoleApplication
 {
     public class Program
     {
-	public static string UNIT = "#", BLANK = " ";
-	public static List<List<string>> graphLines;
-	public static int height = 25;
-	public static int width = 45;
+	private static string UNIT = "#", BLANK = " ";
+	private static List<List<string>> graphLines;
+	private static int height = 25;
+	private static int width = 45;
+        private static string webToPing = "google.com";
+
 
         public static void Main(string[] args)
         {
@@ -19,12 +21,15 @@ namespace ConsoleApplication
             int minPing = -1;
             int totalPing = 0;
             int numTimesPinged = 0;
-/*
+
+	    //Can be deleted once data is read from ping
+	    FillList();
+
+
+            // Can be changed to whilte(true) for infinit iteration.o
             for(int i = 1; i <= 40; i++)
             {
                 Ping ping = new Ping();
-
-                string webToPing = "tistory.co.kr";
 
                 string msg = "Pinging attempt " + i + " ["+webToPing+"]";
 
@@ -45,29 +50,31 @@ namespace ConsoleApplication
                     maxPing = checkforMax(rtt,maxPing);
                     minPing = checkforMin(rtt,minPing);
 
-                    if(rtt > 80)
-                    {
-                        Console.ForegroundColor = ConsoleColor.Red;
-                        Console.WriteLine(msg + " RTT = " + rtt.ToString() + "ms");
-                        Console.ResetColor();
-                    }
-                    else if(rtt > 50 && rtt <= 80)
-                    {
-                        Console.ForegroundColor = ConsoleColor.Yellow;
-                        Console.WriteLine(msg + " RTT = " + rtt.ToString() + "ms");
-                        Console.ResetColor();
-                    }
-                    else
-                    {
-                        Console.ForegroundColor = ConsoleColor.Green;
-                        Console.WriteLine(msg + " RTT = " + rtt.ToString() + "ms");
-                        Console.ResetColor();
-                    }
+                    updateView(maxPing, minPing, (totalPing/numTimesPinged), rtt);
+
+                    // if(rtt > 80)
+                    // {
+                    //     Console.ForegroundColor = ConsoleColor.Red;
+                    //     Console.WriteLine(msg + " RTT = " + rtt.ToString() + "ms");
+                    //     Console.ResetColor();
+                    // }
+                    // else if(rtt > 50 && rtt <= 80)
+                    // {
+                    //     Console.ForegroundColor = ConsoleColor.Yellow;
+                    //     Console.WriteLine(msg + " RTT = " + rtt.ToString() + "ms");
+                    //     Console.ResetColor();
+                    // }
+                    // else
+                    // {
+                    //     Console.ForegroundColor = ConsoleColor.Green;
+                    //     Console.WriteLine(msg + " RTT = " + rtt.ToString() + "ms");
+                    //     Console.ResetColor();
+                    // }
 
 
-                    Console.ForegroundColor = ConsoleColor.Blue;
-                    Console.WriteLine("Max Ping: "+maxPing+"\tMin Ping: "+minPing+"\tCur Ping: "+rtt+"\tAvg Ping: "+(totalPing/numTimesPinged));
-                    Console.ResetColor();
+                    // Console.ForegroundColor = ConsoleColor.Blue;
+                    // Console.WriteLine("Max Ping: "+maxPing+"\tMin Ping: "+minPing+"\tCur Ping: "+rtt+"\tAvg Ping: "+(totalPing/numTimesPinged));
+                    // Console.ResetColor();
 
 
                 }
@@ -76,17 +83,10 @@ namespace ConsoleApplication
                     Console.WriteLine(msg + "* * * * 0ms");
                 }
 
-                
 
 
-                Thread.Sleep(1000);
-            }*/
-
-		FillList();
-		foreach(List<string> row in graphLines)
-		{
-			Console.WriteLine(PrintGraphLine(row));
-		}
+                Thread.Sleep(1500);
+            }
 
         }// End of Main.
 
@@ -172,6 +172,63 @@ namespace ConsoleApplication
             return newMin;
         }// End of checkforMin
 
+        public static void updateView(int maxPing, int minPing, int avgPing, int curPing)
+        {
+            for(int i = 0; i < 39; i++)
+                Console.WriteLine("");
+            
+            Console.WriteLine("\t\t\t     Pinging attempt [ "+webToPing+" ]");
+            Console.Write("\t\t\tMax : ");
+            writeColoredNumber(maxPing);
+            Console.Write(" | Min : ");
+            writeColoredNumber(minPing);
+            Console.Write(" | Avg : ");
+            writeColoredNumber(avgPing);
+            Console.Write(" | Cur : ");
+            writeColoredNumber(curPing);
 
+            Console.WriteLine("");
+
+            for(int i = 0; i < (49 +44); i++)
+                Console.Write("-");
+
+            Console.WriteLine();
+
+            for(int row = 0; row < 25; row++)
+            {
+                Console.Write("| ");
+                Console.Write(PrintGraphLine(graphLines[row]));
+                Console.Write(" |\n");
+            }
+
+            for(int i = 0; i < (49 +44); i++)
+                Console.Write("-");
+            
+            Console.WriteLine("");
+
+        }// End of updateView
+
+        //Helper method that will write a string to a console in diff color based on the time.
+        public static void writeColoredNumber(int pingRTT)
+        {
+            if(pingRTT > 80)
+            {
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.Write(pingRTT+"");
+                Console.ResetColor();
+            }
+            else if(pingRTT > 50 && pingRTT <= 80)
+            {
+                Console.ForegroundColor = ConsoleColor.Yellow;
+                Console.Write(pingRTT+"");
+                Console.ResetColor();
+            }
+            else
+            {
+                Console.ForegroundColor = ConsoleColor.Green;
+                Console.Write(pingRTT+"");
+                Console.ResetColor();
+            }
+        }
     }
 }
