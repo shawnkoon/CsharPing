@@ -94,14 +94,14 @@ namespace ConsoleApplication
 
 	public static void BuildGraph(int maxPing, int minPing, int avgPing, int curPing)
 	{
-		int num = curPing/5;
+		int num = curPing/5 + 1;
 		for(int i = 0; i < graphLines.Count; i++)
 		{
-            graphLines[i].RemoveAt(graphLines[i].Count-1);
-			if(i > graphLines.Count - num)
+			if(i >= graphLines.Count - num)
 				graphLines[i].Insert(0, UNIT);
 			else
 				graphLines[i].Insert(0, BLANK);
+            graphLines[i].RemoveAt(graphLines[i].Count-1);
 			
 		}
 	}//End BuildGraph
@@ -218,7 +218,7 @@ namespace ConsoleApplication
         //Helper method that will write a string to a console in diff color based on the time.
         public static void writeColoredNumber(int pingRTT)
         {
-            if(pingRTT > 80)
+            if(pingRTT > 84)
             {
                 Console.ForegroundColor = ConsoleColor.Red;
                 Console.Write(pingRTT+"");
