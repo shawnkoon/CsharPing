@@ -12,7 +12,7 @@ namespace ConsoleApplication
         private static List<List<string>> graphLines;
         private static int height = 25;
         private static int width = 45;
-        private static string webToPing = "google.com";
+        private static string webToPing = "tistory.co.kr";
 
 
         public static void Main(string[] args)
@@ -187,7 +187,24 @@ namespace ConsoleApplication
             for(int row = 0; row < 25; row++)
             {
                 Console.Write("| ");
-                Console.Write(PrintGraphLine(graphLines[row]));
+                if(row < 8)
+                {
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.Write(PrintGraphLine(graphLines[row]));
+                    Console.ResetColor();
+                }
+                else if(row >= 8 && row < 16)
+                {
+                    Console.ForegroundColor = ConsoleColor.Yellow;
+                    Console.Write(PrintGraphLine(graphLines[row]));
+                    Console.ResetColor();
+                }
+                else
+                {
+                    Console.ForegroundColor = ConsoleColor.Green;
+                    Console.Write(PrintGraphLine(graphLines[row]));
+                    Console.ResetColor();
+                }
                 Console.Write("|\n");
             }
 
@@ -207,7 +224,7 @@ namespace ConsoleApplication
                 Console.Write(pingRTT+"");
                 Console.ResetColor();
             }
-            else if(pingRTT > 50 && pingRTT <= 80)
+            else if(pingRTT > 44 && pingRTT <= 84)
             {
                 Console.ForegroundColor = ConsoleColor.Yellow;
                 Console.Write(pingRTT+"");
