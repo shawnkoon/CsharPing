@@ -22,8 +22,7 @@ namespace ConsoleApplication
             int totalPing = 0;
             int numTimesPinged = 0;
 
-	    //Can be deleted once data is read from ping
-	    FillList();
+	    InitializeList();
 
 
             // Can be changed to whilte(true) for infinit iteration.o
@@ -49,6 +48,8 @@ namespace ConsoleApplication
 
                     maxPing = checkforMax(rtt,maxPing);
                     minPing = checkforMin(rtt,minPing);
+
+		    BuildGraph(maxPing, minPing, (totalPing/numTimesPinged), rtt);
 
                     updateView(maxPing, minPing, (totalPing/numTimesPinged), rtt);
 
@@ -78,9 +79,10 @@ namespace ConsoleApplication
 
 
                 }
-                catch
+                catch(Exception exp)
                 {
                     Console.WriteLine(msg + "* * * * 0ms");
+		    Console.WriteLine(exp);
                 }
 
 
@@ -90,6 +92,20 @@ namespace ConsoleApplication
 
         }// End of Main.
 
+	public static void BuildGraph(int maxPing, int minPing, int avgPing, int curPing)
+	{
+		int num = curPing/5;
+		for(int i = 0; i < graphLines.Count; i++)
+		{
+			graphLines.RemoveAt(graphLines[i].Count-1);
+			if(i > graphLines.Count - num)
+				graphLines[i].Insert(0, UNIT);
+			else
+				graphLines[i].Insert(0, BLANK);
+			
+		}
+	}//End BuildGraph
+
 	public static string PrintGraphLine(List<string> row)
 	{
 		string word = "";
@@ -98,45 +114,18 @@ namespace ConsoleApplication
 			word+=unit + " ";
 		}
 		return word;
-	}
+	}//End PrintGraphLine
 
 
-	/*
-	This is just a function to fill the list with test data
-
-	Can be deleted once we are getting data from pings
-	*/
-	public static void FillList()
+	//Initializes graphLines to be full of blank spaces
+	public static void InitializeList()
 	{
 		graphLines = new List<List<string>>();
-		int num = 0;
 		for(int i = 0; i < height; i++)
 		{
-			
 			graphLines.Add(new List<string>());
-
-		}
-		for(int i = 0; i < 45; i++)
-		{
-			if(i%7==0)
-				num = 25;
-			else if(i%3==0)
-				num = 3;
-			else if(i%5==0)
-				num = 16;
-			else if(i%2==0)
-				num = 8;
-			else
-				num = 22;
-
-			foreach(List<string> row in graphLines)
-			{
-				int index = graphLines.IndexOf(row);
-				if(index > graphLines.Count - num)
-					row.Add(UNIT);
-				else
-					row.Add(BLANK);
-			}
+			for(int j = 0; j < width; j++)
+				graphLines[i].Add(" ");
 		}
 	}// End of FillList
 
