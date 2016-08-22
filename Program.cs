@@ -8,10 +8,10 @@ namespace ConsoleApplication
 {
     public class Program
     {
-	private static string UNIT = "#", BLANK = " ";
-	private static List<List<string>> graphLines;
-	private static int height = 25;
-	private static int width = 45;
+        private static string UNIT = "#", BLANK = " ";
+        private static List<List<string>> graphLines;
+        private static int height = 25;
+        private static int width = 45;
         private static string webToPing = "google.com";
 
 
@@ -22,8 +22,8 @@ namespace ConsoleApplication
             int totalPing = 0;
             int numTimesPinged = 0;
 
-	    //Can be deleted once data is read from ping
-	    FillList();
+            //Can be deleted once data is read from ping
+            FillList();
 
 
             // Can be changed to whilte(true) for infinit iteration.o
@@ -198,7 +198,7 @@ namespace ConsoleApplication
             {
                 Console.Write("| ");
                 Console.Write(PrintGraphLine(graphLines[row]));
-                Console.Write(" |\n");
+                Console.Write("|\n");
             }
 
             for(int i = 0; i < (49 +44); i++)
